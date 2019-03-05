@@ -7,10 +7,10 @@
     <% end %>
   </div>
   <div class="search">
-    <form action="" method="post">
-      <input type="search" id="search-bar" name="search-bar" placeholder="Search questions...">
+    <%= form_for :search, url: '/questions', method: 'get' do %>
+      <input type="search" id="search-bar" name="search" placeholder="Search questions...">
       <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-    </form>
+    <% end %>
   </div>
   <div class="nav">
     <ul>
