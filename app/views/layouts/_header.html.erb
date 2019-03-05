@@ -1,0 +1,23 @@
+<div class="banner-index">
+  <span id="top"></span>
+  <div class="logo">
+    <%= image_tag('ask_mate_logo.png', :alt => 'AskMate Logo') %>
+    <%= link_to '/' do %>
+      <h1>Ask Mate</h1>
+    <% end %>
+  </div>
+  <div class="search">
+    <form action="" method="post">
+      <input type="search" id="search-bar" name="search-bar" placeholder="Search questions...">
+      <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+    </form>
+  </div>
+  <div class="nav">
+    <ul>
+      <div class="button"><li>Add Question</li></div>
+      <div class="home"><li>
+        <%= link_to 'Home', '/' %>
+      </li></div>
+    </ul>
+  </div>
+</div>

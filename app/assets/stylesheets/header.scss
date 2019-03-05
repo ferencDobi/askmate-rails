@@ -1,0 +1,29 @@
+@import 'helpers/variables';
+
+.banner-index {
+  background-color: $header-color;
+  height: 120px;
+  display: flex;
+  justify-content: space-evenly;
+
+  .logo {
+    width: 400px;
+
+    img {
+      height: 100%;
+      vertical-align: middle;
+      float: left;
+    }
+
+    h1 {
+      color: $highlight-color;
+      text-shadow: 5px 5px 2px black;
+      display: inline;
+      font-size: 50px;
+      font-family: $logo-font;
+      font-weight: normal;
+      float: left;
+    }
+  }
+}
+
