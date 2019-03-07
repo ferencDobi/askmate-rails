@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @question.title %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @question.message %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @question.image %>
+</p>
+
+<p>
+  <strong>Upvotes:</strong>
+  <%= @question.upvotes %>
+</p>
+
+<p>
+  <strong>Views:</strong>
+  <%= @question.views %>
+</p>
+
+<p>
+  <strong>Belongs to:</strong>
+  <%= @question.belongs_to %>
+</p>
+
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Back', questions_path %>
