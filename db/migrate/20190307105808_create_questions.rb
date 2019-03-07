@@ -6,7 +6,7 @@ class CreateQuestions < ActiveRecord::Migration[5.2]
       t.string :image
       t.integer :upvotes
       t.integer :views
-      t.User :belongs_to
+      t.belongs_to :user, index: true
 
       t.timestamps
     end

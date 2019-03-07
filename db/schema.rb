@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_07_104443) do
+ActiveRecord::Schema.define(version: 2019_03_07_105808) do
+
+  create_table "questions", force: :cascade do |t|
+    t.string "title"
+    t.text "message"
+    t.string "image"
+    t.integer "upvotes"
+    t.integer "views"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_questions_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
