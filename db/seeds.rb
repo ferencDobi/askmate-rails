@@ -6,5 +6,5 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(username: 'Admin', email: 'admin@askmate.com',
-            password_digest: BCrypt::Password.create('password'))
+User.create(username: 'Anonymous', email: 'guest@askmate.com',
+            password_digest: BCrypt::Password.create(SecureRandom.uuid))
