@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_07_105808) do
+ActiveRecord::Schema.define(version: 2019_03_10_141355) do
 
   create_table "questions", force: :cascade do |t|
     t.string "title"
@@ -26,13 +26,15 @@ ActiveRecord::Schema.define(version: 2019_03_07_105808) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.string "password"
+    t.string "password_digest"
     t.string "email"
     t.string "first_name"
     t.string "last_name"
     t.date "birthday"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
 end
