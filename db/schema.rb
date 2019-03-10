@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_10_141355) do
+ActiveRecord::Schema.define(version: 2019_03_10_195644) do
 
   create_table "questions", force: :cascade do |t|
     t.string "title"
     t.text "message"
     t.string "image"
-    t.integer "upvotes"
-    t.integer "views"
+    t.integer "upvotes", default: 0
+    t.integer "views", default: 0
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
