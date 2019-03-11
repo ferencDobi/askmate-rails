@@ -1,8 +1,13 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :questions
   root 'home#index'
+
+  get 'signup' => 'users#new'
+  post 'signup' => 'users#new'
+  resources :users
+
+  resources :questions
 
   get '/about' => 'home#about'
 
