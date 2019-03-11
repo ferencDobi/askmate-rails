@@ -6,6 +6,9 @@
 </div>
 
 <div class="page-body">
-  <%= render 'questions/index', questions: @questions %>
+  <%= render 'questions/index', questions: @questions, title: 'Recent questions' %>
+  <div class="list">
+    <%= link_to 'List all questions', questions_path, class: 'button' %>
+  </div>
   <%= render 'layouts/login-box' %>
 </div>

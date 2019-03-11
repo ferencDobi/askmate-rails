@@ -1,42 +1,47 @@
-<div class="table_container">
-  <table>
-    <tr>
-      <th>
-        <a href="{{ url_for('route_sort', sort_method='submission_time') }}">
-          Posted
-        </a>
-      </th>
-      <th>
-        <a href="{{ url_for('route_sort', sort_method='title') }}">
-          Title
-        </a>
-      </th>
-      <th>
-        <a href="{{ url_for('route_sort', sort_method='vote_number') }}">
-          <i class="fa fa-thumbs-up" aria-hidden="true"></i>
-        </a>
-      </th>
-      <th>
-        <a href="{{ url_for('route_sort', sort_method='answer_count') }}">
-          <i class="fa fa-comment" aria-hidden="true"></i>
-        </a>
-      </th>
-      <th>
-        <a href="{{ url_for('route_sort', sort_method='view_number') }}">
-          <i class="fa fa-eye" aria-hidden="true"></i>
-        </a>
-      </th>
-    </tr>
-    <% @questions.each do |question| %>
-    <tr class="table_body">
-      <td><%= question.created_at %></td>
-      <td><%= link_to question.title, question %></td>
-      <td><%= question.upvotes %></td>
-      <td><%= 15 %></td>
-      <td><%= question.views %></td>
-    </tr>
-    <% end %>
-  </table>
-  <br>
-  <a href="#top" class="to-top">Back to top</a>
+<div class="page-body">
+  <div class="table_container">
+    <table>
+      <tr>
+        <th>
+          <a href="{{ url_for('route_sort', sort_method='submission_time') }}">
+            Posted
+          </a>
+        </th>
+        <th>
+          <a href="{{ url_for('route_sort', sort_method='title') }}">
+            Title
+          </a>
+        </th>
+        <th>
+          <a href="{{ url_for('route_sort', sort_method='vote_number') }}">
+            <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+          </a>
+        </th>
+        <th>
+          <a href="{{ url_for('route_sort', sort_method='answer_count') }}">
+            <i class="fa fa-comment" aria-hidden="true"></i>
+          </a>
+        </th>
+        <th>
+          <a href="{{ url_for('route_sort', sort_method='view_number') }}">
+            <i class="fa fa-eye" aria-hidden="true"></i>
+          </a>
+        </th>
+      </tr>
+      <% @questions.each do |question| %>
+        <tr class="table_body">
+          <td><%= time_ago_in_words question.created_at %> ago</td>
+          <td><%= link_to question.title, question %></td>
+          <td><%= question.upvotes %></td>
+          <td><%= question.answers.size %></td>
+          <td><%= question.views %></td>
+        </tr>
+      <% end %>
+    </table>
+    <br>
+    <a href="#top" class="to-top">Back to top</a>
+  </div>
+  <%= render 'layouts/login-box' %>
 </div>
+
+

@@ -1,20 +1,16 @@
 <div class="slide-container">
   <%= render 'questions/new' %>
   <div class="question">
-    <div class="tag"><h3><%= @title %></h3></div>
+    <div class="tag"><h3><%= title %></h3></div>
     <% if questions %>
-      <%= questions.each do |question| %>
+      <% questions.each do |question| %>
         <%= render 'questions/show', question: question %>
       <% end %>
     <% else %>
       <p>Sorry, there are no such questions.</p><br>
     <% end %>
   </div>
-  {%  if search and questions %}
-  <div class="list"><a href="#top" class="to-top">Back to top</a></div>
-  {% endif %}
-</div>
-{% if not (search and questions) %}
-<div class="list">
-  <%= link_to 'List all questions', questions_path, class: 'button' %>
+  <% if questions %>
+    <div class="list"><a href="#top" class="to-top">Back to top</a></div>
+  <% end %>
 </div>
