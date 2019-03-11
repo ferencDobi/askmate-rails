@@ -1,7 +1,7 @@
 <div class="login-box">
   <div class="form-box">
-    <% if session[:username] %>
-      <p>Welcome, <%= session[:username] %>!</p>
+    <% if current_user %>
+      <p>Welcome, <%= current_user.username %>!</p>
       <%= form_tag({controller: :session, action: :destroy}, method: :delete) do %>
         <button type="submit" class="input">Log Out</button>
       <% end %>
