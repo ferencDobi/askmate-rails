@@ -1,32 +1,14 @@
-<%= form_with(model: question, local: true, id: 'form-container') do |form| %>
-  <% if question.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
-
-      <ul>
-      <% question.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+<div id="form-container">
+  <%= form_tag controller: :questions, action: :create do %>
+    <label for="title">Question title:</label>
+    <input type="text" id="title" name="question[title]" minlength="5" size="30" required>
+    <label for="message">Detailed description:</label>
+    <textarea id="message" name="question[message]" cols="55" rows="8" required></textarea>
+    <label for="image">Image URL:</label>
+    <input type="url" id="image" name="question[image]" size="30">
+    <%= hidden_field_tag 'question[user_id]', current_user&.id %>
+    <br>
+    <button type="submit" class="input">Submit question</button>
+    <button type="reset" class="input">Reset</button>
   <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :message %>
-    <%= form.text_area :message %>
-  </div>
-
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.text_field :image %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
