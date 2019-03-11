@@ -18,7 +18,9 @@
     <br>
     <button class="input" type="submit">Register</button>
 
-    <!-- TODO: add error handling -->
+    <% if flash[:error] %>
+      <p class="red"><%= flash[:error] %></p>
+    <% end %>
 
   <% end %>
 </div>
