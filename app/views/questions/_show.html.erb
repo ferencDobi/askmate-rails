@@ -1,0 +1,26 @@
+<div class="question-container">
+  <div class="header">
+    <h2><%= link_to question.title, question %></h2>
+  </div>
+  <div class="vote-container">
+    <span title="{{ question['vote_value'] }}" class="vote-value"></span>
+    <form action="{{ url_for('route_vote', question_id=question['id']) }}" method="post" class="vote-up">
+      <input type="hidden" value="1" name="vote">
+      <button type="button" class="vote-btn-up"><i class="fa fa-caret-up"></i></button>
+    </form>
+    <p><%= question.upvotes %></p>
+    <form action="{{ url_for('route_vote', question_id=question['id']) }}" method="post" class="vote-down">
+      <input type="hidden" value="-1" name="vote">
+      <button type="button" class="vote-btn-down"><i class="fa fa-caret-down"></i></button>
+    </form>
+  </div>
+  <p><%= question.message %></p>
+  <% if question.image %>
+    <%= image_tag question.image %>
+  <% end %>
+  <div class="footer">
+    <a href="{{ url_for( 'route_user_page', user_name=question['username']) }}"><p><%= question.user.username %></p></a>
+    <p><%= time_ago_in_words question.created_at %> ago</p>
+    <p>Views: <%= question.views %></p>
+  </div>
+</div>

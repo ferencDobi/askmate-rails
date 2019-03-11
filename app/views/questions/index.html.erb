@@ -1,37 +1,42 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Questions</h1>
-
-<table>
-  <thead>
+<div class="table_container">
+  <table>
     <tr>
-      <th>Title</th>
-      <th>Message</th>
-      <th>Image</th>
-      <th>Upvotes</th>
-      <th>Views</th>
-      <th>Belongs to</th>
-      <th colspan="3"></th>
+      <th>
+        <a href="{{ url_for('route_sort', sort_method='submission_time') }}">
+          Posted
+        </a>
+      </th>
+      <th>
+        <a href="{{ url_for('route_sort', sort_method='title') }}">
+          Title
+        </a>
+      </th>
+      <th>
+        <a href="{{ url_for('route_sort', sort_method='vote_number') }}">
+          <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+        </a>
+      </th>
+      <th>
+        <a href="{{ url_for('route_sort', sort_method='answer_count') }}">
+          <i class="fa fa-comment" aria-hidden="true"></i>
+        </a>
+      </th>
+      <th>
+        <a href="{{ url_for('route_sort', sort_method='view_number') }}">
+          <i class="fa fa-eye" aria-hidden="true"></i>
+        </a>
+      </th>
     </tr>
-  </thead>
-
-  <tbody>
     <% @questions.each do |question| %>
-      <tr>
-        <td><%= question.title %></td>
-        <td><%= question.message %></td>
-        <td><%= question.image %></td>
-        <td><%= question.upvotes %></td>
-        <td><%= question.views %></td>
-        <td><%= question.belongs_to %></td>
-        <td><%= link_to 'Show', question %></td>
-        <td><%= link_to 'Edit', edit_question_path(question) %></td>
-        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <tr class="table_body">
+      <td><%= question.created_at %></td>
+      <td><%= link_to question.title, question %></td>
+      <td><%= question.upvotes %></td>
+      <td><%= 15 %></td>
+      <td><%= question.views %></td>
+    </tr>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Question', new_question_path %>
+  </table>
+  <br>
+  <a href="#top" class="to-top">Back to top</a>
+</div>

@@ -27,7 +27,7 @@
 
 <p>
   <strong>Belongs to:</strong>
-  <%= @question.belongs_to %>
+  <%= @question.user.username %>
 </p>
 
 <%= link_to 'Edit', edit_question_path(@question) %> |
