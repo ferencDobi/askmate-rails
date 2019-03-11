@@ -2,18 +2,18 @@
   <div class="form-box">
     <% if session[:username] %>
       <p>Welcome, <%= session[:username] %>!</p>
-      <form action="{{ url_for('route_logout') }}" method="post">
+      <%= form_tag({controller: :session, action: :destroy}, method: :delete) do %>
         <button type="submit" class="input">Log Out</button>
-      </form>
+      <% end %>
     <% else %>
-      <form action="{{ url_for('route_login') }}" method="post">
+      <%= form_tag controller: :session, action: :create do %>
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
+        <input type="text" id="username" name="login[username]" required>
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+        <input type="password" id="password" name="login[password]" required>
         <button type="submit" class="input">Sign In</button>
-      </form>
-      <%= form_tag controller: 'users', action: 'new' do %>
+      <% end %>
+      <%= form_tag controller: :users, action: :new do %>
         <input type="hidden" value="" name="new_user" id="new-user">
         <button type="submit" class="input">Sign Up</button>
       <% end %>

@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   post 'signup' => 'users#new'
   resources :users
 
+  post 'login' => 'session#create'
+  delete 'logout' => 'session#destroy'
+
   resources :questions
 
   get '/about' => 'home#about'
