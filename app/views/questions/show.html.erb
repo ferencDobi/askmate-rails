@@ -42,20 +42,19 @@
         <% end %>
         <div class="footer">
           <p><%= time_ago_in_words answer.created_at %> ago</p>
-          <a href="{{ url_for( 'route_user_page', user_name=answer['username']) }}"><p><%= answer.user.username %></p></a>
+          <%= link_to user_path(answer.user) do %>
+            <p><%= answer.user.username %></p>
+          <% end %>
         </div>
       </div>
       <% end %>
     </div>
-    {% if answers %}
-    <br>
-    <a href="#top" class="to-top">Back to top</a>
-    {% else %}
-    <div class="padding"></div>
-    {% endif %}
-    {% if answers|length == 1 %}
-    <div class="padding"></div>
-    {% endif %}
+    <% if @question.answers.size < 2 %>
+      <div class="padding"></div>
+    <% else %>
+      <br>
+      <a href="#top" class="to-top">Back to top</a>
+    <% end %>
   </div>
   <%= render 'layouts/login-box' %>
 </div>

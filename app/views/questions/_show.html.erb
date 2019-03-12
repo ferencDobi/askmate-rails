@@ -19,7 +19,9 @@
     <%= image_tag question.image %>
   <% end %>
   <div class="footer">
-    <a href="{{ url_for( 'route_user_page', user_name=question['username']) }}"><p><%= question.user.username %></p></a>
+    <%= link_to user_path(question.user) do %>
+      <p><%= question.user.username %></p>
+    <% end %>
     <p><%= time_ago_in_words question.created_at %> ago</p>
     <p>Views: <%= question.views %></p>
   </div>
