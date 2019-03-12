@@ -14,7 +14,7 @@
         <button type="submit" class="input">Sign In</button>
       <% end %>
       <%= form_tag controller: :users, action: :new do %>
-        <input type="hidden" value="" name="new_user" id="new-user">
+        <input type="hidden" value="" name="user[username]" id="new-user">
         <button type="submit" class="input">Sign Up</button>
       <% end %>
       <% if flash[:error] %>
