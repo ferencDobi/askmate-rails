@@ -12,27 +12,21 @@
 //
 
 //= require jquery
-//= require jquery_ujs
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
 
-
-$(function() {
+document.addEventListener("turbolinks:load", function() {
     $(".answer-button").click(function() {
         $(".collapsible").slideToggle(700);
     });
-});
 
-$(function() {
     $(".button").click(function() {
         $("#form-container").slideToggle(700);
         $(".jumbotron").slideToggle(700);
     });
-});
 
-$(function() {
     $(".vote-value").each(function() {
         let savedVote = +$(this).attr('title');
         let upVote = $(this).siblings(".vote-up");
@@ -47,57 +41,48 @@ $(function() {
             upVote.children("input").val(2);
         }
     });
-});
 
-function vote() {
-    $(this).parent().submit();
-    let direction, other;
-    if ($(this).hasClass("vote-btn-up")) {
-        direction = 1;
-        other = ".vote-down";
-    } else {
-        direction = -1;
-        other = ".vote-up";
+    function vote() {
+        $(this).parent().submit();
+        let direction, other;
+        if ($(this).hasClass("vote-btn-up")) {
+            direction = 1;
+            other = ".vote-down";
+        } else {
+            direction = -1;
+            other = ".vote-up";
+        }
+        let formInput = $(this).siblings("input");
+        let voteValue = parseInt(formInput.attr('value'));
+        let voteNumber = $(this).parent().siblings("p");
+        let updatedVoteNumber = +voteNumber.text() + voteValue;
+        voteNumber.text(updatedVoteNumber);
+        let otherVoteDirection = $(this).parent().siblings(other);
+        if (voteValue === direction || voteValue === 2 * direction) {
+            $(this).css('color', '#2D3142');
+            formInput.attr('value', -1 * direction);
+            otherVoteDirection.children("input").attr('value', -2 * direction);
+            otherVoteDirection.children("button").removeAttr("style");
+        } else {
+            $(this).css('color', '');
+            formInput.attr('value', direction);
+            otherVoteDirection.children("input").attr('value', -1 * direction);
+        }
     }
-    let formInput = $(this).siblings("input");
-    let voteValue = parseInt(formInput.attr('value'));
-    let voteNumber = $(this).parent().siblings("p");
-    let updatedVoteNumber = +voteNumber.text() + voteValue;
-    voteNumber.text(updatedVoteNumber);
-    let otherVoteDirection = $(this).parent().siblings(other);
-    if (voteValue === direction || voteValue === 2 * direction) {
-        $(this).css('color', '#2D3142');
-        formInput.attr('value', -1 * direction);
-        otherVoteDirection.children("input").attr('value', -2 * direction);
-        otherVoteDirection.children("button").removeAttr("style");
-    } else {
-        $(this).css('color', '');
-        formInput.attr('value', direction);
-        otherVoteDirection.children("input").attr('value', -1 * direction);
-    }
-}
 
-$(function() {
     $(".vote-btn-up").click(vote);
-});
-
-$(function() {
     $(".vote-btn-down").click(vote);
-});
 
-function validate() {
-    let p1 = $("#password1").val();
-    let p2 = $("#password2").val();
-    if (p1 !== p2) {
-        alert("Passwords don't match. Type both passwords again.");
+    function validate() {
+        let p1 = $("#password1").val();
+        let p2 = $("#password2").val();
+        if (p1 !== p2) {
+            alert("Passwords don't match. Type both passwords again.");
+        }
     }
-}
 
-$(function() {
     $("#password2").focusout(validate);
-});
 
-$(function() {
     $("#username").focusout(function() {
         let username = $("#username").val();
         $("#new-user").val(username);
