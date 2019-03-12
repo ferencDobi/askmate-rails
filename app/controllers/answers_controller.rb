@@ -26,7 +26,7 @@ class AnswersController < ApplicationController
 
     respond_to do |format|
       if @answer.save
-        format.html { redirect_to @answer, notice: 'Answer was successfully created.' }
+        format.html { redirect_to question_path(id: @answer.question_id), notice: 'Answer was successfully created.' }
         format.json { render :show, status: :created, location: @answer }
       else
         format.html { render :new }
@@ -68,6 +68,6 @@ class AnswersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def answer_params
-    params.require(:answer).permit(:message, :image, :upvotes, :user_id, :question_id)
+    params.require(:answer).permit(:message, :image, :user_id, :question_id)
   end
 end

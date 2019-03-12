@@ -1,34 +1,61 @@
-<p id="notice"><%= notice %></p>
+<div class="page-body">
+  <div class="slide-container">
+    <%= render 'questions/new' %>
+    <div class="question">
+      <%= render 'questions/show', question: @question %>
+    </div>
+    <div class="answer-button"><p>Post answer</p></div>
+    <%= form_tag({controller: :answers, action: :create}, class: 'collapsible') do %>
+      <label for="message">Answer:</label>
+      <textarea id="message" name="answer[message]" cols="55" rows="8" minlength="10" required></textarea>
+      <br><br>
+      <label for="image">Image URL:</label>
+      <input type="url" id="image" name="answer[image]" size="30">
+      <%= hidden_field_tag 'answer[user_id]', current_user&.id %>
+      <%= hidden_field_tag 'answer[question_id]', @question.id %>
+      <br><br>
+      <button type="submit" class="input">Submit answer</button>
+      <button type="reset" class="input">Reset</button>
 
-<p>
-  <strong>Title:</strong>
-  <%= @question.title %>
-</p>
-
-<p>
-  <strong>Message:</strong>
-  <%= @question.message %>
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <%= @question.image %>
-</p>
-
-<p>
-  <strong>Upvotes:</strong>
-  <%= @question.upvotes %>
-</p>
-
-<p>
-  <strong>Views:</strong>
-  <%= @question.views %>
-</p>
-
-<p>
-  <strong>Belongs to:</strong>
-  <%= @question.user.username %>
-</p>
-
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
+      <br><br>
+    <% end %>
+  </div>
+  <div class="answer-container">
+    <div class="answer-grid">
+      <% @question.answers.each do |answer| %>
+      <div class="answer">
+        <div class="vote-container">
+          <span title="{{ answer['vote_value'] }}" class="vote-value"></span>
+          <form action="{{ url_for('route_vote', question_id=question['id'], answer_id=answer['id']) }}" method="post" class="vote-up">
+            <input type="hidden" value="1" name="vote">
+            <button type="button" class="vote-btn-up"><i class="fa fa-caret-up"></i></button>
+          </form>
+          <p><%= answer.upvotes %></p>
+          <form action="{{ url_for('route_vote', question_id=question['id'], answer_id=answer['id']) }}" method="post" class="vote-down">
+            <input type="hidden" value="-1" name="vote">
+            <button type="button" class="vote-btn-down"><i class="fa fa-caret-down"></i></button>
+          </form>
+        </div>
+        <div class="answer-message"><p><%= answer.message %></p></div>
+        <% if answer.image %>
+          <%= image_tag answer.image %>
+        <% end %>
+        <div class="footer">
+          <p><%= time_ago_in_words answer.created_at %> ago</p>
+          <a href="{{ url_for( 'route_user_page', user_name=answer['username']) }}"><p><%= answer.user.username %></p></a>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    {% if answers %}
+    <br>
+    <a href="#top" class="to-top">Back to top</a>
+    {% else %}
+    <div class="padding"></div>
+    {% endif %}
+    {% if answers|length == 1 %}
+    <div class="padding"></div>
+    {% endif %}
+  </div>
+  <%= render 'layouts/login-box' %>
+</div>

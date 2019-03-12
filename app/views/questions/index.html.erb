@@ -1,31 +1,35 @@
 <div class="page-body">
+  <div class="slide-container">
+    <%= render 'questions/new' %>
+    <div class="tag_container">
+      <div class="tag">
+        <h3>All questions</h3>
+      </div>
+    </div>
+  </div>
   <div class="table_container">
     <table>
       <tr>
         <th>
-          <a href="{{ url_for('route_sort', sort_method='submission_time') }}">
-            Posted
-          </a>
+          <%= link_to 'Posted', questions_path(sortby: :created_at) %>
         </th>
         <th>
-          <a href="{{ url_for('route_sort', sort_method='title') }}">
-            Title
-          </a>
+          <%= link_to 'Title', questions_path(sortby: :title) %>
         </th>
         <th>
-          <a href="{{ url_for('route_sort', sort_method='vote_number') }}">
-            <i class="fa fa-thumbs-up" aria-hidden="true"></i>
-          </a>
+          <%= link_to questions_path(sortby: :upvotes) do %>
+            <i class="fa fa-thumbs-up" aria-hidden="true" title="upvotes"></i>
+          <% end %>
         </th>
         <th>
-          <a href="{{ url_for('route_sort', sort_method='answer_count') }}">
-            <i class="fa fa-comment" aria-hidden="true"></i>
-          </a>
+          <%= link_to questions_path(sortby: :answers) do %>
+            <i class="fa fa-comment" aria-hidden="true" title="answers"></i>
+          <% end %>
         </th>
         <th>
-          <a href="{{ url_for('route_sort', sort_method='view_number') }}">
-            <i class="fa fa-eye" aria-hidden="true"></i>
-          </a>
+          <%= link_to questions_path(sortby: :views) do %>
+            <i class="fa fa-eye" aria-hidden="true" title="views"></i>
+          <% end %>
         </th>
       </tr>
       <% @questions.each do |question| %>
