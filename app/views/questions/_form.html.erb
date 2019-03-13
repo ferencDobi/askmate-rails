@@ -6,7 +6,6 @@
     <textarea id="message" name="question[message]" cols="55" rows="8" required></textarea>
     <label for="image">Image URL:</label>
     <input type="url" id="image" name="question[image]" size="30">
-    <%= hidden_field_tag 'question[user_id]', current_user&.id %>
     <br>
     <button type="submit" class="input">Submit question</button>
     <button type="reset" class="input">Reset</button>

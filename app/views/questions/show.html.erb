@@ -5,20 +5,7 @@
       <%= render 'questions/show', question: @question %>
     </div>
     <div class="answer-button"><p>Post answer</p></div>
-    <%= form_tag({controller: :answers, action: :create}, class: 'collapsible') do %>
-      <label for="message">Answer:</label>
-      <textarea id="message" name="answer[message]" cols="55" rows="8" minlength="10" required></textarea>
-      <br><br>
-      <label for="image">Image URL:</label>
-      <input type="url" id="image" name="answer[image]" size="30">
-      <%= hidden_field_tag 'answer[user_id]', current_user&.id %>
-      <%= hidden_field_tag 'answer[question_id]', @question.id %>
-      <br><br>
-      <button type="submit" class="input">Submit answer</button>
-      <button type="reset" class="input">Reset</button>
-
-      <br><br>
-    <% end %>
+    <%= render 'answers/form', question_id: @question.id %>
   </div>
   <div class="answer-container">
     <div class="answer-grid">

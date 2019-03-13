@@ -1,42 +1,13 @@
-<%= form_with(model: answer, local: true) do |form| %>
-  <% if answer.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
+<%= form_tag({controller: :answers, action: :create}, class: 'collapsible') do %>
+  <label for="message">Answer:</label>
+  <textarea id="message" name="answer[message]" cols="55" rows="8" minlength="10" required></textarea>
+  <br><br>
+  <label for="image">Image URL:</label>
+  <input type="url" id="image" name="answer[image]" size="30">
+  <%= hidden_field_tag 'answer[question_id]', question_id %>
+  <br><br>
+  <button type="submit" class="input">Submit answer</button>
+  <button type="reset" class="input">Reset</button>
 
-      <ul>
-      <% answer.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :message %>
-    <%= form.text_area :message %>
-  </div>
-
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.text_field :image %>
-  </div>
-
-  <div class="field">
-    <%= form.label :upvotes %>
-    <%= form.number_field :upvotes %>
-  </div>
-
-  <div class="field">
-    <%= form.label :belongs_to %>
-    <%= form.text_field :belongs_to %>
-  </div>
-
-  <div class="field">
-    <%= form.label :belongs_to %>
-    <%= form.text_field :belongs_to %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <br><br>
 <% end %>
