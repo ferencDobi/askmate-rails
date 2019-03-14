@@ -18,6 +18,8 @@
 //= require_tree .
 
 document.addEventListener("turbolinks:load", function() {
+
+
     $(".answer-button").click(function() {
         $(".collapsible").slideToggle(700);
     });
@@ -44,7 +46,7 @@ document.addEventListener("turbolinks:load", function() {
 
     function vote() {
         $(this).parent().submit();
-        let direction, other;
+        /*let direction, other;
         if ($(this).hasClass("vote-btn-up")) {
             direction = 1;
             other = ".vote-down";
@@ -52,7 +54,7 @@ document.addEventListener("turbolinks:load", function() {
             direction = -1;
             other = ".vote-up";
         }
-        let formInput = $(this).siblings("input");
+        let formInput = $(this).siblings("");
         let voteValue = parseInt(formInput.attr('value'));
         let voteNumber = $(this).parent().siblings("p");
         let updatedVoteNumber = +voteNumber.text() + voteValue;
@@ -67,7 +69,7 @@ document.addEventListener("turbolinks:load", function() {
             $(this).css('color', '');
             formInput.attr('value', direction);
             otherVoteDirection.children("input").attr('value', -1 * direction);
-        }
+        }*/
     }
 
     $(".vote-btn-up").click(vote);
