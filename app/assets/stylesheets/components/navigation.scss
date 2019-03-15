@@ -7,11 +7,12 @@
   display: flex;
   align-items: center;
 
-  div {
+  div, .button {
     cursor: pointer;
     display: inline;
     margin: 0 20px;
     vertical-align: middle;
+    width: initial;
   }
 }
 
