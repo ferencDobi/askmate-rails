@@ -12,6 +12,8 @@ Next, run the database migrations with ```rake db:migrate```, and seed the datab
 
 Finally, start the server in development mode with ```rails server -e development```.
 
+To run the tests, type ```rspec```. Make sure to have the latest [geckodriver](https://github.com/mozilla/geckodriver) installed in order to execute tests using Selenium.
+
 ## Features implemented
 
 * You can add and view questions.
