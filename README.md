@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## About
 
-Things you may want to cover:
+This is a StackOverflow-clone originally developed in Flask as a Codecool team project. It has been rewritten entirely in Rails as an individual project.
 
-* Ruby version
+## Installation
 
-* System dependencies
+To run the application, first install its dependencies by running ```bundle install```.
 
-* Configuration
+Next, run the database migrations with ```rake db:migrate```, and seed the database with sample data by running ```rake db:seed```.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Finally, start the server in development mode with ```rails server -e development```.
