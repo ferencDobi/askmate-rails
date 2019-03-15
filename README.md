@@ -30,4 +30,4 @@ Finally, start the server in development mode with ```rails server -e developmen
 
 * Unit tests are missing.
 * The views are not responsive and mobile-friendly.
-* Due to the fact that most of the css, javascript and the templates have been copied over from the old project without serious modifications, the frontend code contains severe architectural flaws and enough spaghetti code to feed a family for a week. 
+* Due to the fact that most of the css, javascript and the templates have been copied over from the old project without serious modifications, the frontend code contains severe architectural flaws and enough spaghetti code to feed a family of four for a week. 
