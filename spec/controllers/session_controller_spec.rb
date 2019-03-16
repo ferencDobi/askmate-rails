@@ -50,9 +50,9 @@ describe SessionController do
   describe 'DELETE #destroy' do
     before do
       request.headers[:HTTP_REFERER] = '/some_page'
-      create :user
+      user = create :user
       post :create, params: {
-        user: { username: 'TestUser1', password: 'password' }
+        user: { username: user[:username], password: user[:password] }
       }
       delete :destroy
     end
