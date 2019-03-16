@@ -25,16 +25,16 @@ feature 'Register user' do
   end
 
   scenario 'cannot register when username is already taken' do
-    signup_form.visit_page.submit username: 'Capybara', email: 'capy@bara.test'
-    signup_form.visit_page.submit username: 'Capybara', email: 'not@taken.test'
+    create :user, username: 'Capybara'
+    signup_form.visit_page.submit username: 'Capybara'
 
     expect(page).to have_content 'Username or email already in use.'
     expect(User.where(username: 'Capybara').count).to eq 1
   end
 
   scenario 'cannot register when email is already taken' do
-    signup_form.visit_page.submit username: 'Capybara', email: 'capy@bara.test'
-    signup_form.visit_page.submit username: 'NotTaken', email: 'capy@bara.test'
+    create :user, email: 'capy@bara.test'
+    signup_form.visit_page.submit email: 'capy@bara.test'
 
     expect(page).to have_content 'Username or email already in use.'
     expect(User.where(email: 'capy@bara.test').count).to eq 1
