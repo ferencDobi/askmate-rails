@@ -4,12 +4,12 @@
     <div class="registration">
       <div class="tag"><h3>Registration</h3></div>
       <%= form_for(@user) do %>
-        <label for="username">Username:<p class="red inline"> *</p></label>
+        <label for="new_username">Username:<p class="red inline"> *</p></label>
         <input type="text" name="user[username]" id="new_username" value="<%= @user.username %>" required>
-        <label for="password">Password:<p class="red inline"> *</p></label>
-        <input type="password" name="user[password]" id="password1" required>
-        <label for="password2">Confirm password:<p class="red inline"> *</p></label>
-        <input type="password" name="password2" id="password2" required>
+        <label for="new_password">Password:<p class="red inline"> *</p></label>
+        <input type="password" name="user[password]" id="new_password" required>
+        <label for="confirm_password">Confirm password:<p class="red inline"> *</p></label>
+        <input type="password" name="user[password_confirmation]" id="confirm_password" required>
         <label for="email">E-mail address:<p class="red inline"> *</p></label>
         <input type="email" name="user[email]" id="email" required>
         <label for="firstname">First name:</label>
