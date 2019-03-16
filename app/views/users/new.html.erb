@@ -21,8 +21,8 @@
         <br>
         <button class="input" type="submit">Register</button>
 
-        <% if flash[:error] %>
-          <p class="red"><%= flash[:error] %></p>
+        <% if flash[:signup_error] %>
+          <p class="red"><%= flash[:signup_error] %></p>
         <% end %>
 
       <% end %>

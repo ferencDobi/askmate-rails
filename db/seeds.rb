@@ -96,6 +96,8 @@ What is this supposed to be?
   image: 'https://codecoolstatic.s3.amazonaws.com/wp-content/uploads/2018/04/codecool_symbol_flat.png'
 )
 
+# Sample answers:
+
 Answer.create(
   message: 'Not sure, but it looks similar to SoloLearn\'s logo.',
   image: 'https://www.sololearn.com/images/fb-story-icon.jpg',
